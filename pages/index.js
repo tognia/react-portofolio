@@ -5,7 +5,8 @@ import {
   AiFillLinkedin, 
   AiFillYoutube} 
 from 'react-icons/ai';
-
+import Image from 'next/image';
+import deved from "../public/dev-ed-wave.png"
 
 export default function Home() {
   return (
@@ -28,23 +29,26 @@ export default function Home() {
           </ul>
           </nav>   
           <div className='text-center p-10'>
-            <h2 className='text-5xl'>TOGNIA Henri</h2>
-            <h3>Developer and designer</h3>
-            <p>
+            <h2 className='text-5xl py-2 text-teal-600 font-medium'>TOGNIA Henri</h2>
+            <h3 className='text-2xl py-2'>Developer and designer</h3>
+            <p className='text-md py-5 text-gray-800'>
             With these steps, you have manually created an IAM role in AWS with the necessary permissions and configured 
             GitHub Actions to use that role for deployment. The secret credentials (AWS access key ID and secret access key) 
             are not exposed in the workflow, and the workflow will use the specified IAM role and region for deploying the API Gateway API [^web page context^].
             </p>
           </div> 
-          <div>
+          <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600'>
               <AiFillTwitterCircle />
               <AiFillLinkedin />
               <AiFillYoutube />
           </div>  
-          <div>
-              
+          <div className='relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden'>
+              <Image src={deved} layout='fill' objectFit='cover'  />
           </div>      
+        </section>
 
+        <section>
+          
         </section>
       </main>
     </>
