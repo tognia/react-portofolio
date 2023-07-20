@@ -7,6 +7,9 @@ import {
 from 'react-icons/ai';
 import Image from 'next/image';
 import deved from "../public/dev-ed-wave.png"
+import design from "../public/design.png";
+import code from "../public/code.png";
+import consulting from "../public/consulting.png";
 
 export default function Home() {
   return (
@@ -34,7 +37,7 @@ export default function Home() {
             <p className='text-md py-5 text-gray-800'>
             With these steps, you have manually created an IAM role in AWS with the necessary permissions and configured 
             GitHub Actions to use that role for deployment. The secret credentials (AWS access key ID and secret access key) 
-            are not exposed in the workflow, and the workflow will use the specified IAM role and region for deploying the API Gateway API [^web page context^].
+            are not exposed in the workflow, and the workflow will use the specified IAM role and region for deploying the API Gateway API.
             </p>
           </div> 
           <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600'>
@@ -48,7 +51,71 @@ export default function Home() {
         </section>
 
         <section>
-          
+          <div>
+            <h3 className='text-3xl py-1'>Service I offer</h3>
+            <p className='text-md py-2 leading-8 text-gray-800'>
+            Si tu me montres là où on dit les parents que vous trouvez intéressants tu as gagné. 
+            <span className='text-teal-500'>
+              Agencies
+            </span> consulted for 
+            <span className='text-teal-500'>
+              Startup
+            </span>
+            We collaborated with talented people to provide you our committed client best quality offer
+            services so that we can deserve the confidence you put in us
+            </p>
+            <p className='text-md leading-8 text-gray-800'>
+              I offer a wide range of services for businesses and particular in need
+            </p>
+          </div>
+          <div>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10'>
+                  <Image className='relative mx-auto' src={design} width={100} height={100}  />
+                  <h3 className='text-lg font-medium pt-8 pb'>Beautiful design</h3>
+                  <p className='py-2'>We create beautiful design that will shine your compan to the world</p>
+                  <h4 className='py-4 text-teal-600'>Design Tools I use</h4>
+                  <p className='text-gray-800 py-1'>Photoshop</p>
+                  <p className='text-gray-800 py-1'>Illustrator</p>
+                  <p className='text-gray-800 py-1'>Figma</p>
+            </div>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10'>
+                  <Image className='relative mx-auto' src={consulting} width={100} height={100}  />
+                  <h3 className='text-lg font-medium pt-8 pb'>Consulting</h3>
+                  <p className='py-2'>We create beautiful design that will shine your compan to the world</p>
+                  <h4 className='py-4 text-teal-600'>Design Tools I use</h4>
+                  <p className='text-gray-800 py-1'>Photoshop</p>
+                  <p className='text-gray-800 py-1'>Illustrator</p>
+                  <p className='text-gray-800 py-1'>Figma</p>
+            </div>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10'>
+                  <Image className='relative mx-auto' src={code} width={100} height={100}  />
+                  <h3 className='text-lg font-medium pt-8 pb'>Code</h3>
+                  <p className='py-2'>We create beautiful design that will shine your compan to the world</p>
+                  <h4 className='py-4 text-teal-600'>Design Tools I use</h4>
+                  <p className='text-gray-800 py-1'>Photoshop</p>
+                  <p className='text-gray-800 py-1'>Illustrator</p>
+                  <p className='text-gray-800 py-1'>Figma</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div>
+            <h3 className='text-3xl py-1'>Portofolio</h3>
+            <p className='text-md py-2 leading-8 text-gray-800'>
+            Si tu me montres là où on dit les parents que vous trouvez intéressants tu as gagné. 
+            <span className='text-teal-500'>
+              Agencies
+            </span> consulted for 
+            <span className='text-teal-500'>
+              Startup
+            </span>
+            We collaborated with talented people to provide you our committed client best quality offer
+            services so that we can deserve the confidence you put in us
+            </p>
+            <p className='text-md leading-8 text-gray-800'>
+              I offer a wide range of services for businesses and particular in need
+            </p>
+          </div>
         </section>
       </main>
     </>
