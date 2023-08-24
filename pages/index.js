@@ -17,6 +17,79 @@ import web4 from  "../public/web4.png";
 import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
 import { useState } from 'react';
+const crypto = require('crypto');
+
+const querystring = require('querystring');
+
+// Your JSON object
+const data = {
+    "GSI1PK": "FIXTURE_TEAM#274ebb73-d04d-41fc-945c-e180569096a6#2023",
+    "SK": "FIXTURE_HOME_TEAM#b6ecb62d-597c-49b4-b899-0b971282502d",
+    "GSI1SK": "FIXTURES#ended#1690912800",
+    "PK": "FIXTURE#b6ecb62d-597c-49b4-b899-0b971282502d"
+};
+
+// Convert the JSON object to a string
+const jsonString = JSON.stringify(data);
+
+// Encryption key (keep this secret)
+const encryptionKey = crypto.randomBytes(32); // 256-bit key
+
+// Initialize the cipher
+const cipher = crypto.createCipher('aes-256-cbc', encryptionKey);
+
+// Encrypt the JSON string
+let encryptedData = cipher.update(jsonString, 'utf8', 'hex');
+encryptedData += cipher.final('hex');
+
+// URL encode the encrypted data
+const encodedEncryptedData = encodeURIComponent(encryptedData);
+
+// Construct the URL with the encoded encrypted data as a query parameter
+const url = `https://example.com/resource?data=${encodedEncryptedData}`;
+
+console.log("URL:", encodedEncryptedData);
+
+
+//////////////////////////////////
+
+// Assuming you have the received URL
+// const receivedUrl = url;
+
+// Extract the encoded encrypted data parameter from the URL
+// const receivedEncodedEncryptedData = receivedUrl.split('=')[1];
+
+// URL decode the encoded encrypted data
+const encodedEncryptedData1 = decodeURIComponent(encodedEncryptedData);
+
+// Decryption key (should match the encryption key used for encryption)
+const decryptionKey = encryptionKey;
+
+// Initialize the decipher
+const decipher = crypto.createDecipher('aes-256-cbc', decryptionKey);
+
+// Decrypt the encoded encrypted data
+let decryptedData = decipher.update(encodedEncryptedData1, 'hex', 'utf8');
+decryptedData += decipher.final('utf8');
+
+// Parse the decrypted JSON string to retrieve the original data
+const parsedData = JSON.parse(decryptedData);
+
+console.log("Decrypted Data:", parsedData);
+
+
+/////////////////////////````````````
+
+
+// Convert the JSON object to a string
+const jsonString1 = JSON.stringify(data);
+
+// Hash the JSON string using SHA-1
+const sha1Hash = crypto.createHash('sha1').update(jsonString).digest('hex');
+
+console.log("SHA-1 Hash:",jsonString1, sha1Hash);
+
+
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
