@@ -29,11 +29,19 @@ const data = {
     "PK": "FIXTURE#b6ecb62d-597c-49b4-b899-0b971282502d"
 };
 
-// Convert the JSON object to a string
-const jsonString = JSON.stringify(data);
+const data1 = {
+        "GSI1PK": "FIXTURE_TEAM#274ebb73-d04d-41fc-945c-e180569096a6#2023",
+        "SK": "FIXTURE_HOME_TEAM#ee5c9ea9-fe91-4040-a540-594921e0bda2",
+        "GSI1SK": "FIXTURES#ended#1690635365",
+        "PK": "FIXTURE#ee5c9ea9-fe91-4040-a540-594921e0bda2"
+    }
 
-// Encryption key (keep this secret)
-const encryptionKey = crypto.randomBytes(32); // 256-bit key
+// Convert the JSON object to a string
+const jsonString = JSON.stringify(data1);
+
+// Use a passphrase to generate encryption key (keep this secret)
+const passphrase = "odb-api-key";
+const encryptionKey = crypto.createHash('sha256').update(passphrase).digest();
 
 // Initialize the cipher
 const cipher = crypto.createCipher('aes-256-cbc', encryptionKey);
@@ -59,11 +67,17 @@ console.log("URL:", encodedEncryptedData);
 // Extract the encoded encrypted data parameter from the URL
 // const receivedEncodedEncryptedData = receivedUrl.split('=')[1];
 
+// Assuming you have the received URL
+const receivedUrl = "https://example.com/resource?data=encoded_encrypted_data_here";
+
+// Extract the encoded encrypted data parameter from the URL
+const receivedEncodedEncryptedData = receivedUrl.split('=')[1];
+
 // URL decode the encoded encrypted data
 const encodedEncryptedData1 = decodeURIComponent(encodedEncryptedData);
 
-// Decryption key (should match the encryption key used for encryption)
-const decryptionKey = encryptionKey;
+// Use the same passphrase to generate the decryption key
+const decryptionKey = crypto.createHash('sha256').update(passphrase).digest();
 
 // Initialize the decipher
 const decipher = crypto.createDecipher('aes-256-cbc', decryptionKey);
